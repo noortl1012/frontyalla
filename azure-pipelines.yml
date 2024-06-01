@@ -50,3 +50,8 @@ steps:
     SourceFolder: 'terraform'
     Contents: '**'  # Include all files in the 'terraform' directory
     TargetFolder: '$(Build.ArtifactStagingDirectory)/terraform'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/terraform'
+    ArtifactName: 'terraform-files'
+    publishLocation: 'Container' 
