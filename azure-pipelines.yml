@@ -45,3 +45,8 @@ steps:
     pathtoPublish: 'back/dist'  # Update this path according to your backend build output directory
     artifactName: 'backend-artifact'
   displayName: 'Publish Backend Build Artifact' 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'terraform'
+    Contents: '**'  # Include all files in the 'terraform' directory
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/terraform'
