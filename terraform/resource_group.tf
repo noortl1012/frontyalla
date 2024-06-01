@@ -1,6 +1,6 @@
 
 
 resource "azurerm_resource_group" "rg" {
-  name     = "appservice-rg"
+  name     = "my-rg"
   location = "francecentral"
 }

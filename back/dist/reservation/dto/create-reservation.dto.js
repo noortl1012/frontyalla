@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateReservationDto = void 0;
 const class_validator_1 = require("class-validator");
-const reservation_entity_1 = require("../entities/reservation.entity");
 class CreateReservationDto {
 }
 exports.CreateReservationDto = CreateReservationDto;
@@ -21,7 +20,8 @@ __decorate([
     __metadata("design:type", Date)
 ], CreateReservationDto.prototype, "date", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(reservation_entity_1.etat),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateReservationDto.prototype, "\u00E9tat", void 0);
 //# sourceMappingURL=create-reservation.dto.js.map

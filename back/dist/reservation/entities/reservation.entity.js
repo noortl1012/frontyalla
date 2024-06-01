@@ -9,17 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Reservation = exports.etat = void 0;
+exports.Reservation = exports.ETAT_CANCELED = exports.ETAT_CONFIRMED = exports.ETAT_PENDING = void 0;
 const typeorm_1 = require("typeorm");
 const participant_entity_1 = require("../../participant/entities/participant.entity");
 const paiement_entity_1 = require("../../paiement/entities/paiement.entity");
 const event_entity_1 = require("../../event/entities/event.entity");
-var etat;
-(function (etat) {
-    etat["PENDING"] = "en attente";
-    etat["CONFIRMED"] = "confirm\u00E9e";
-    etat["CANCELED"] = "declined";
-})(etat || (exports.etat = etat = {}));
+exports.ETAT_PENDING = "en attente";
+exports.ETAT_CONFIRMED = "confirmée";
+exports.ETAT_CANCELED = "annulée";
 let Reservation = class Reservation {
 };
 exports.Reservation = Reservation;
@@ -44,12 +41,9 @@ __decorate([
     __metadata("design:type", Date)
 ], Reservation.prototype, "date", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        type: "enum",
-        enum: etat,
-    }),
+    (0, typeorm_1.Column)({ type: "varchar", length: 50 }),
     __metadata("design:type", String)
-], Reservation.prototype, "\u00E9tat", void 0);
+], Reservation.prototype, "etat", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

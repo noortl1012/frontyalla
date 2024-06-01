@@ -5,7 +5,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Reservation } from './entities/reservation.entity';
 import { Repository } from 'typeorm';
 import { Participant } from 'src/participant/entities/participant.entity';
-import {etat} from './entities/reservation.entity'
 import { Event } from 'src/event/entities/event.entity';
 
 @Injectable()
@@ -48,7 +47,7 @@ export class ReservationService {
     const reservation = new Reservation();
     reservation.participant = participant;
     reservation.date = new Date();
-    reservation.état=etat.CONFIRMED;
+    reservation.etat = 'CONFIRMED'; 
 
     // Save the reservation to the database
     await this.reservationRepository.save(reservation);
@@ -69,7 +68,7 @@ export class ReservationService {
       throw new NotFoundException(`Reservation with ID ${reservationId} not found`);
     }
   
-    reservation.état = etat.CANCELED;
+    reservation.etat = 'CANCELED';
   
     // Save the updated reservation to the database
     await this.reservationRepository.save(reservation);
@@ -97,8 +96,8 @@ export class ReservationService {
   
   async getEventReservations(eventId: number): Promise<Reservation[]> {
     const reservations = await this.reservationRepository.find({
-      select: ["idReservation", "état"],
-      where: { état: etat.CONFIRMED, event: { idEvent: eventId } },
+      select: ["idReservation", "etat"],
+      where: { etat: 'CONFIRMED', event: { idEvent: eventId } },
     });
   
     return reservations;
@@ -107,8 +106,8 @@ export class ReservationService {
 
   async getNumberOfEventReservationsConfirmed (eventId: number) {
     const NumberReservations = await this.reservationRepository.findAndCount({
-      select: ["idReservation", "état"],
-      where: { état: etat.CONFIRMED, event: { idEvent: eventId } },
+      select: ["idReservation", "etat"],
+      where: { etat: 'CONFIRMED', event: { idEvent: eventId } },
     });
   
     return NumberReservations;

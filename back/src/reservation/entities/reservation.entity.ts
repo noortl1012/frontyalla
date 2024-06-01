@@ -1,16 +1,12 @@
-// Importez les modules nécessaires de TypeORM
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToOne, JoinColumn } from "typeorm";
 import { Participant } from "src/participant/entities/participant.entity";
 import { Paiement } from "src/paiement/entities/paiement.entity";
 import { Event } from "src/event/entities/event.entity";
 
-// Enumération pour représenter les états possibles d'une réservation
-export enum etat {
-  PENDING = "en attente",
-  CONFIRMED = "confirmée",
-  CANCELED = "declined",
-}
-
+// Instead of using ENUM, define constants for etat values
+export const ETAT_PENDING = "en attente";
+export const ETAT_CONFIRMED = "confirmée";
+export const ETAT_CANCELED = "annulée"; // Corrected the value
 
 @Entity()
 export class Reservation {
@@ -18,7 +14,7 @@ export class Reservation {
   idReservation: number;
   
   @ManyToOne(() => Participant, participant => participant.reservations)
-  participant: Participant; // Relation avec Participant 
+  participant: Participant;
 
   @OneToOne(() => Paiement, paiement => paiement.reservation)
   paiement: Paiement;
@@ -29,19 +25,13 @@ export class Reservation {
   @Column({ type: "timestamp" })
   date: Date;
 
-  @Column({
-    type: "enum",
-    enum: etat,
-  })
-  état: etat;
+  // Instead of ENUM, use VARCHAR
+  @Column({ type: "varchar", length: 50 }) // Adjust length as needed
+  etat: string;
 
-  // Date de création de la réservation
   @CreateDateColumn()
   createdAt: Date;
 
-  // Date de mise à jour de la réservation
   @UpdateDateColumn()
   updatedAt: Date;
-
 }
-

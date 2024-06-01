@@ -18,7 +18,6 @@ const typeorm_1 = require("@nestjs/typeorm");
 const reservation_entity_1 = require("./entities/reservation.entity");
 const typeorm_2 = require("typeorm");
 const participant_entity_1 = require("../participant/entities/participant.entity");
-const reservation_entity_2 = require("./entities/reservation.entity");
 const event_entity_1 = require("../event/entities/event.entity");
 let ReservationService = class ReservationService {
     constructor(reservationRepository, participantRepository, eventRepository) {
@@ -41,7 +40,7 @@ let ReservationService = class ReservationService {
         const reservation = new reservation_entity_1.Reservation();
         reservation.participant = participant;
         reservation.date = new Date();
-        reservation.état = reservation_entity_2.etat.CONFIRMED;
+        reservation.etat = 'CONFIRMED';
         await this.reservationRepository.save(reservation);
         event.numberofReservations += 1;
         await this.eventRepository.save(event);
@@ -52,7 +51,7 @@ let ReservationService = class ReservationService {
         if (!reservation) {
             throw new common_1.NotFoundException(`Reservation with ID ${reservationId} not found`);
         }
-        reservation.état = reservation_entity_2.etat.CANCELED;
+        reservation.etat = 'CANCELED';
         await this.reservationRepository.save(reservation);
         return reservation;
     }
@@ -65,15 +64,15 @@ let ReservationService = class ReservationService {
     }
     async getEventReservations(eventId) {
         const reservations = await this.reservationRepository.find({
-            select: ["idReservation", "état"],
-            where: { état: reservation_entity_2.etat.CONFIRMED, event: { idEvent: eventId } },
+            select: ["idReservation", "etat"],
+            where: { etat: 'CONFIRMED', event: { idEvent: eventId } },
         });
         return reservations;
     }
     async getNumberOfEventReservationsConfirmed(eventId) {
         const NumberReservations = await this.reservationRepository.findAndCount({
-            select: ["idReservation", "état"],
-            where: { état: reservation_entity_2.etat.CONFIRMED, event: { idEvent: eventId } },
+            select: ["idReservation", "etat"],
+            where: { etat: 'CONFIRMED', event: { idEvent: eventId } },
         });
         return NumberReservations;
     }

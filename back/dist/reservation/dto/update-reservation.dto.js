@@ -11,12 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateReservationDto = void 0;
 const class_validator_1 = require("class-validator");
-const reservation_entity_1 = require("../entities/reservation.entity");
 class UpdateReservationDto {
 }
 exports.UpdateReservationDto = UpdateReservationDto;
 __decorate([
-    (0, class_validator_1.IsEnum)(reservation_entity_1.etat),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], UpdateReservationDto.prototype, "\u00E9tat", void 0);
 //# sourceMappingURL=update-reservation.dto.js.map

@@ -1,6 +1,4 @@
-// create-reservation.dto.ts
-import { IsDate, IsEnum, IsNumber, IsNotEmpty } from 'class-validator';
-import { etat } from '../entities/reservation.entity';
+import { IsDate, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateReservationDto {
 
@@ -8,7 +6,7 @@ export class CreateReservationDto {
   @IsNotEmpty()
   date: Date;
 
-  @IsEnum(etat)
-  état: etat;
-  
+  @IsString()
+  @IsNotEmpty()
+  état: string;
 }

@@ -1,10 +1,6 @@
-
-import { IsDate, IsEnum } from 'class-validator';
-import { etat } from '../entities/reservation.entity';
+import { IsString } from 'class-validator';
 
 export class UpdateReservationDto {
-
-    @IsEnum(etat)
-  état: etat;
+  @IsString()
+  état: string;
 }
-
