@@ -27,7 +27,7 @@ resource "azurerm_app_service" "nest_app_service" {
 
    app_settings = {
     "WEBSITE_NODE_DEFAULT_VERSION" = "21.6.0",  # Specify Node.js version for backend
-    "WEBSITE_RUN_FROM_PACKAGE"     = "https://mystoragenour.blob.core.windows.net/backcontainer?sp=r&st=2024-06-03T11:57:53Z&se=2024-06-08T19:57:53Z&spr=https&sv=2022-11-02&sr=c&sig=e8tPvskbiG7QfGmXG8mxhErcAZI%2Bd%2BNNl3XpUuPjF7Q%3D",
+    "WEBSITE_RUN_FROM_PACKAGE"     = "https://mystoragenour.blob.core.windows.net/backcontainer?sp=r&st=2024-06-03T22:23:33Z&se=2024-06-04T06:23:33Z&spr=https&sv=2022-11-02&sr=c&sig=YODlgWQzavCCtZf6hcJO%2BRG5w1fLQN9jm9aqp9JcHtw%3D",
     # Add other app settings as needed
   }
    

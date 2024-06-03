@@ -24,7 +24,7 @@ resource "azurerm_app_service" "frontend_app_service" {
   }
 
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE"     = "https://mystoragenour.blob.core.windows.net/frontcontainer?sp=r&st=2024-06-03T11:42:20Z&se=2024-06-08T19:42:20Z&spr=https&sv=2022-11-02&sr=c&sig=FnBNKr%2F%2BFM9S28AyxJ4p%2FIcRPEq%2B8KUZOSn%2B4oLp3I0%3D",
+    "WEBSITE_RUN_FROM_PACKAGE"     = "https://mystoragenour.blob.core.windows.net/frontcontainer?sp=r&st=2024-06-03T22:26:11Z&se=2024-06-04T06:26:11Z&spr=https&sv=2022-11-02&sr=c&sig=ICZH%2Fe3hop8gX4mC%2FChOJq7xYjBftyzE0khvl40Qn58%3D",
     # Add other app settings as needed
   }
   
