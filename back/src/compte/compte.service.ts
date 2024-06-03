@@ -10,7 +10,7 @@ import * as bcrypt from 'bcrypt';
 @Injectable()
 export class CompteService {
 createCompte(username: any, password: any) {
-  throw new Error('Method not implemented.');
+  throw new Error('Method not implementted.');
 }
 constructor(
 @InjectRepository(Compte)
